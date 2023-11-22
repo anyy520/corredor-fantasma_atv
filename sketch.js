@@ -18,7 +18,7 @@ function preload() {
     player_pulando = loadAnimation("fantasma pulando.png");
 
     //carregar som
-    somAssustador = loadSound("uuu.wav");
+    
 
 
     //criar os grupos das grades e das portas
@@ -32,14 +32,13 @@ function preload() {
 function setup() {
     createCanvas(600, 600);
     //tocar o som em loop
-    somAssustador.loop()
+
+   
     //criando a torre
     torre = createSprite(300, 300);
     torre.addImage("torre", torreImg);
     torre.velocityY = 1;
 
-    
-    
     //criando o player
     player = createSprite(200, 200, 50, 50);
     player.addAnimation("player parado", player_parado);
@@ -55,24 +54,15 @@ function draw() {
     if (estadoJogo === "jogar") {
         player.changeAnimation("player parado");
 
-        //código para controlar o jogador para cima
-        if (keyDown("space") || touches.length>0) {
-            player.velocityY = -10;
-            player.changeAnimation("player pulando");
-            touches = [];
-        }
+        // -código para controlar o jogador para cima
+        
+        
 
-        //código para controlar o jogador para Esquerda
-        if (keyDown("left")) {
-            player.x -= 3;
-            player.changeAnimation("player pulando");
-        }
+        // -código para controlar o jogador para Esquerda
+        
 
-        //código para controlar o jogador para direita
-        if (keyDown("right")) {
-            player.x += 3;
-            player.changeAnimation("player pulando");
-        }
+        //-código para controlar o jogador para direita
+        
 
         //gravidade
         player.velocityY += 0.8;
@@ -84,15 +74,15 @@ function draw() {
 
         //código para descansar na torre
 
+
        player.collide(grupoGrade)
 
         gerarPortas();
         drawSprites();
 
         //código para finalizar o jogo
-        if (player.isTouching(grupoBlocoInvisivel) || player.y > height) {
-            estadoJogo = "fim";
-        }
+        
+
     }
     if (estadoJogo === "fim") {
         background(0)
@@ -141,3 +131,4 @@ function gerarPortas() {
 
 
 }
+
